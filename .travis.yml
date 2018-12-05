@@ -17,15 +17,17 @@ after_success:
 after_failure:
 before_deploy:
 deploy:
-  provider: elasticbeanstalk
-  access_key_id: $ACCESSKEYID
-  secret_access_key:
-    secure: "$SECRETACCESSKEY"
-  region: "us-east-1"  
-  app: "travis-test"
-  env: "TravisTest-env"
-  bucket_name: "elasticbeanstalk-us-east-1-474625947253"
-  on:
-    branch: master
-after_deploy:
-after_script:
+    provider: elasticbeanstalk
+    access_key_id: $ACCESSKEYID
+    secret_access_key:
+        secure: "$SECRETACCESSKEY"
+    region: "us-east-1"  
+    app: "travis-test"
+    env: "TravisTest-env"
+    bucket_name: "elasticbeanstalk-us-east-1-474625947253"
+    on:
+        branch: master
+        python: "3.6"
+        condition: $FLASK = 1.0.2
+    after_deploy:
+    after_script:
