@@ -3,7 +3,7 @@
 This is an example project demonstrating the use of Travis CI. This project was
 developed for ECEN 5033 DevOps in the Cloud at CU Boulder.
 
-This project implements a decimal to hex converter website. The Travis CI
+This project implements a decimal to arbitrary base converter website. The Travis CI
 portion of the project automatically builds, tests and deploys the website
 to an AWS Elastic Beanstalk instance.
 
