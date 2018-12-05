@@ -8,6 +8,7 @@ env:
     - FLASK=0.12.1
 install:
     - pip install flask==$FLASK
+before_script:
 script:
     - echo "Testing goes here"
     - flask --version
