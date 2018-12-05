@@ -1,5 +1,25 @@
 from flask import Flask, render_template, request
-app = Flask(__name__)
+
+def create_app():
+    app = Flask(__name__)
+
+    @app.route('/')
+    def index():
+        return render_template('index.html', converted='')
+
+    @app.route('/', methods=['POST'])
+    def index_post():
+        text = request.form['text']
+        base = request.form['base']
+        if verify(text) == True and verify_base(base) == True:
+            num = to_int(text)
+            b = to_int(base)
+            return render_template('index.html', converted=convert_wrap(num, b))
+        else:
+            return render_template('index.html', converted="BAD INPUT")
+
+    return app
+
 
 def verify(text):
     '''This function verifies that the input is well formatted.'''
@@ -48,20 +68,6 @@ def convert(num, base):
     else:
         return convert(num // base, base) + digits[num % base]
     
-@app.route('/')
-def index():
-    return render_template('index.html', converted='')
-
-@app.route('/', methods=['POST'])
-def index_post():
-    text = request.form['text']
-    base = request.form['base']
-    if verify(text) == True and verify_base(base) == True:
-        num = to_int(text)
-        b = to_int(base)
-        return render_template('index.html', converted=convert_wrap(num, b))
-    else:
-        return render_template('index.html', converted="BAD INPUT")
-
 if __name__ == "__main__":
+    app = create_app()
     app.run()
