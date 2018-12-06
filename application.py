@@ -67,7 +67,9 @@ def convert(num, base):
         return digits[num]
     else:
         return convert(num // base, base) + digits[num % base]
-    
+
+application = create_app()
+ 
 if __name__ == "__main__":
-    application = create_app()
+    #application = create_app()
     application.run(port=80)
