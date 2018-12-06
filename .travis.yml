@@ -8,7 +8,7 @@ env:
     - FLASK=0.12.1
 install:
     - pip install flask==$FLASK
-    - pip install pytest-flask=4.0.1 
+    - pip install pytest-flask 
 before_script:
 script:
     - pytest test_func.py
