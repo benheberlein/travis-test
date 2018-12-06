@@ -8,14 +8,17 @@ env:
     - FLASK=0.12.1
 install:
     - pip install flask==$FLASK
+    - pip install pytest-flask 
 before_script:
 script:
-    - echo "Testing goes here"
-    - flask --version
+    - pytest test_func.py
+    - pytest test_web.py
 after_success:
-    
+    - echo "Tests PASSED"
 after_failure:
+    - echo "Tests FAILED"
 before_deploy:
+    - echo "Preparing to deploy to AWS"
 deploy:
     provider: elasticbeanstalk
     access_key_id: $ACCESSKEYID
@@ -29,5 +32,7 @@ deploy:
         branch: master
         python: "3.6"
         condition: $FLASK = 1.0.2
-    after_deploy:
-    after_script:
+after_deploy:
+    - echo "Deployed to AWS"
+after_script:
+    - echo "Terminating script"
