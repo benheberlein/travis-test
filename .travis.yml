@@ -1,14 +1,14 @@
 language: python
 python:
+    - "3.6"
     - "3.5"
-    - "3.4"
 env:
     - FLASK=1.0.2
     - FLASK=1.0
     - FLASK=0.12.1
 install:
     - pip install flask==$FLASK
-    - pip install pytest==3.6
+    - pip install pytest==4.0.1
     - pip install pytest-flask 
 before_script:
 script:
