@@ -34,5 +34,6 @@ deploy:
         condition: $FLASK = 1.0.2
 after_deploy:
     - echo "Deployed to AWS"
+    - pytest test_prod.py
 after_script:
     - echo "Terminating script"
