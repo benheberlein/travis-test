@@ -11,6 +11,7 @@ install:
     - pip install pytest==4.0.1
     - pip install pytest-flask 
 before_script:
+    - echo "Starting test section"
 script:
     - pytest test_func.py
     - pytest test_web.py
