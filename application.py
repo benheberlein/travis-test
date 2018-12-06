@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
 
 def create_app():
-    app = Flask(__name__)
+    application = Flask(__name__)
 
-    @app.route('/')
+    @application.route('/')
     def index():
         return render_template('index.html', converted='')
 
-    @app.route('/', methods=['POST'])
+    @application.route('/', methods=['POST'])
     def index_post():
         text = request.form['text']
         base = request.form['base']
@@ -18,7 +18,7 @@ def create_app():
         else:
             return render_template('index.html', converted="BAD INPUT")
 
-    return app
+    return application
 
 
 def verify(text):
@@ -69,5 +69,5 @@ def convert(num, base):
         return convert(num // base, base) + digits[num % base]
     
 if __name__ == "__main__":
-    app = create_app()
-    app.run(port=80)
+    application = create_app()
+    application.run(port=80)
